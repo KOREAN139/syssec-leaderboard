@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -14,8 +13,28 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-    Syssec 마작 리더보드
+          Syssec 마작 리더보드
         </h1>
+
+        <table>
+          <tbody>
+              <tr>
+                <th>순위</th>
+                <td>이름</td>
+                <td>승률</td>
+                <td>1위 비율</td>
+                <td>국수</td>
+              </tr>
+            {Array.from(Array(5)).map((_, i) => (
+              <tr key={`leader-table-${i}`}>
+                <th>{i + 1}</th>
+                <td>AA</td>
+                <td>AA</td>
+                <td>AA</td>
+                <td>AA</td>
+              </tr>))}
+          </tbody>
+        </table>
       </main>
 
       <footer className={styles.footer}>
