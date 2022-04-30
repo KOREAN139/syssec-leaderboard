@@ -17,17 +17,21 @@ const Home: NextPage = () => {
         </h1>
 
         <table>
-          <tbody>
+          <thead>
               <tr>
                 <th>순위</th>
                 <td>이름</td>
+                <td>Elo</td>
                 <td>승률</td>
                 <td>1위 비율</td>
                 <td>국수</td>
               </tr>
+          </thead>
+          <tbody>
             {Array.from(Array(5)).map((_, i) => (
               <tr key={`leader-table-${i}`}>
                 <th>{i + 1}</th>
+                <td>AA</td>
                 <td>AA</td>
                 <td>AA</td>
                 <td>AA</td>
