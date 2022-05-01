@@ -16,17 +16,25 @@ const Home: NextPage = () => {
           Syssec 마작 리더보드
         </h1>
 
-        <table>
+        <table className={styles.leaderboard}>
           <thead>
               <tr>
                 <th>순위</th>
                 <td>이름</td>
                 <td>Elo</td>
-                <td>승률</td>
-                <td>1위 비율</td>
+                <td>1%<sup>*</sup></td>
+                <td>12%<sup>**</sup></td>
                 <td>국수</td>
-              </tr>
+            </tr>
           </thead>
+          <tfoot>
+            <tr>
+              <td colSpan={6}>
+                * 1%: 전체 국수 중 1위를 한 국수의 비율 <br/>
+                ** 12%: 전체 국수 중 1, 2위를 한 국수의 비율
+              </td>
+            </tr>
+          </tfoot>
           <tbody>
             {Array.from(Array(5)).map((_, i) => (
               <tr key={`leader-table-${i}`}>
@@ -39,6 +47,7 @@ const Home: NextPage = () => {
               </tr>))}
           </tbody>
         </table>
+        
       </main>
 
       <footer className={styles.footer}>
