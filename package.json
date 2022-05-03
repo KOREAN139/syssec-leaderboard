@@ -1,7 +1,8 @@
 {
   "name": "syssec-leaderboard",
   "version": "1.0.1",
-  "private": true,
+  "private": false,
+  "homepage": "https://korean139.github.io/syssec-leaderboard",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
