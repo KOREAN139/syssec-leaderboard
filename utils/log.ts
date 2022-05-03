@@ -1,5 +1,5 @@
-import { FourPlayerGameStat, RawFourPlayerGameStats } from '../models/log-analysis';
-import logAnalysis from '../public/log-analysis.json';
+import { FourPlayerGameStat, RawFourPlayerGameStats } from '@/models/log-analysis';
+import logAnalysis from '@/public/log-analysis.json';
 
 export const getFourPlayerGameStats = (): FourPlayerGameStat[] => {
 	const fourPlayerGameLogs = logAnalysis["4player"] as RawFourPlayerGameStats;
