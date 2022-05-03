@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.0.1...v1.0.2) (2022-05-03)
+
+
+### Bug Fixes
+
+* **gh-pages:** add homepage in package.json ([7b351d9](https://github.com/KOREAN139/syssec-leaderboard/commit/7b351d9d40055e86ddedc1caa56567f393e0b429))
+
 ## [1.0.1](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.0.0...v1.0.1) (2022-05-03)
 
 
