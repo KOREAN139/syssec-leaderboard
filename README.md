@@ -1,34 +1,12 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Syssec 마작 리더보드
+[작혼](https://mahjongsoul.com/) 게임 로그 분석을 통해 Syssec의 마작 최강자를 기리는 리더보드입니다 🍕
 
-## Getting Started
+현재는 **4인 마작** 기록을 기준으로 테이블이 구성되어있고, 3인 마작 로그는 수집만 하고 있습니다.
 
-First, run the development server:
+심심할 때 가끔 만지므로 업데이트 속도는 보장할 수 없습니다!
 
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# TODOS
+- [ ] ELO 구현
+- [ ] ISSUE 이용해서 로그 올릴 수 있도록 자동화
+- [ ] 역만의 전당 페이지 추가
+- [ ] 3인 마작 테이블 수치 계산
