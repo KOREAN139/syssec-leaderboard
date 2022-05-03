@@ -9,7 +9,7 @@ Code based on this [repository](https://github.com/MahjongRepository/mahjong_sou
 ## HOW TO USE
 ```
 $ pip3 install -r requirements.txt
-$ python3 fetch_game_log.py -l UUID
+$ python3 fetch_game_log.py UUID1 [UUID2 ...]
 ```
 
 ## HOW TO UPDATE

@@ -6,7 +6,7 @@ import random
 import uuid
 import os
 import json
-from optparse import OptionParser
+import sys
 
 import aiohttp
 
@@ -27,15 +27,12 @@ async def main():
     """
     Login to the CN server get tournament log.
     """
-    parser = OptionParser()
-    parser.add_option("-u", "--uuid", type="string", help="Your game UUID for load.")
-
-    opts, _ = parser.parse_args()
-    game_uuid = opts.uuid
+    game_uuids = sys.argv[1:]
 
     lobby, channel, client_version_string = await connect()
     await login(lobby, client_version_string)
-    await load_game_log(lobby, client_version_string, game_uuid)
+    for game_uuid in game_uuids:
+        await load_game_log(lobby, client_version_string, game_uuid.strip())
     await channel.close()
 
 
