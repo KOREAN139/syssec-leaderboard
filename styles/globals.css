@@ -1,13 +1,8 @@
-@font-face {
-  font-family: 'Pretendard Variable';
-  src: url('../public/PretendardVariable.ttf');
-}
-
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Pretendard Variable';
+  font-family: 'Pretendard Variable', sans-serif;
 }
 
 a {
