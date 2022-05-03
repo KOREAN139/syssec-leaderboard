@@ -1,6 +1,11 @@
 import os
 import json
 import sys
+import logging
+
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s %(levelname)s: %(message)s", datefmt="%Y-%m-%d %H:%M:%S"
+)
 
 LOG_FOLDER = "../logs"
 LOG_ANALYSIS_FILE_PATH = "../public/log-analysis.json"
@@ -12,7 +17,10 @@ def main():
     for uuid in uuids:
         uuid = uuid.strip()
         if uuid in analysis["uuids"]:
+            logging.info(f"Skip {uuid} - Previously analyzed")
             continue
+
+        logging.info(f"Analyzing {uuid}")
         analysis["uuids"].append(uuid)
 
         num_of_players, result = analyze(uuid)
