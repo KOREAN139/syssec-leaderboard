@@ -178,7 +178,8 @@ def process_raw_record(raw_record):
         "records": records
     }
 
-    with open("log.json", "w") as f:
+    game_uuid = log["meta"]["uuid"]
+    with open(f"../logs/{game_uuid}.json", "w") as f:
         f.write(json.dumps(log, separators=(',', ':')))
 
     return True
