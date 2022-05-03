@@ -10,7 +10,12 @@ def main():
 
     uuids = sys.argv[1:]
     for uuid in uuids:
-        num_of_players, result = analyze(uuid.strip())
+        uuid = uuid.strip()
+        if uuid in analysis[uuids]:
+            continue
+        analysis[uuids].append(uuid)
+
+        num_of_players, result = analyze(uuid)
         mode = f"{num_of_players}player"
         for player, rank in result.items():
             stat = analysis[mode].get(player, {
@@ -34,7 +39,8 @@ def main():
 def get_previous_analysis():
     previous_analysis = {
         "3player": {},
-        "4player": {}
+        "4player": {},
+        "uuids": []
     }
 
     if os.path.exists(LOG_ANALYSIS_FILE_PATH):

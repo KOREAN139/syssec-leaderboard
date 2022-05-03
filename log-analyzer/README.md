@@ -24,7 +24,8 @@ $ python3 analyze_logs.py UUID1 [UUID2 ...]
       "4": number,
     },
     ...
-  }
+  },
+  "uuids": [UUID1, UUID2, ...]
 }
 ```
 
@@ -33,3 +34,4 @@ $ python3 analyze_logs.py UUID1 [UUID2 ...]
 `NICKNAME` - 작혼에서 사용되는 닉네임
 `total_games` - 총 국수
 `1 ~ 4` - 해당 순위를 한 국수
+`uuids` - 분석에 사용된 로그 uuid들
