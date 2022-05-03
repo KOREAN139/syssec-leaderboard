@@ -6,7 +6,7 @@ import random
 import uuid
 import os
 import json
-from optparse import OptionParser
+import sys
 
 import aiohttp
 
@@ -22,20 +22,18 @@ logging.basicConfig(
 )
 
 MS_HOST = "https://game.maj-soul.com"
+LOG_FOLDER = "../logs"
 
 async def main():
     """
     Login to the CN server get tournament log.
     """
-    parser = OptionParser()
-    parser.add_option("-u", "--uuid", type="string", help="Your game UUID for load.")
-
-    opts, _ = parser.parse_args()
-    game_uuid = opts.uuid
+    game_uuids = sys.argv[1:]
 
     lobby, channel, client_version_string = await connect()
     await login(lobby, client_version_string)
-    await load_game_log(lobby, client_version_string, game_uuid)
+    for game_uuid in game_uuids:
+        await load_game_log(lobby, client_version_string, game_uuid.strip())
     await channel.close()
 
 
@@ -178,7 +176,8 @@ def process_raw_record(raw_record):
         "records": records
     }
 
-    with open("log.json", "w") as f:
+    game_uuid = log["meta"]["uuid"]
+    with open(f"{LOG_FOLDER}/{game_uuid}.json", "w") as f:
         f.write(json.dumps(log, separators=(',', ':')))
 
     return True
