@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.0.0...v1.0.1) (2022-05-03)
+
+
+### Bug Fixes
+
+* **build:** set deploy branch check properly ([8916df3](https://github.com/KOREAN139/syssec-leaderboard/commit/8916df3febcd42314fca4ad2ce0b42b08b84c0b6))
+
 # 1.0.0 (2022-05-03)
 
 
