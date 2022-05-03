@@ -5,12 +5,15 @@ import logging
 import random
 import uuid
 import os
+import json
 
 import aiohttp
 
 from ms.base import MSRPCChannel
 from ms.rpc import Lobby
 import ms.protocol_pb2 as pb
+from google.protobuf.json_format import MessageToJson
+
 
 
 logging.basicConfig(
@@ -98,6 +101,78 @@ async def load_game_log(manager_api, client_version_string, game_uuid):
     if res.error.code != 0:
         logging.error("Fetch game record Error:")
         logging.error(res.error)
+
+    process_raw_record(res)
+
+    return True
+
+def process_raw_record(raw_record):
+    wrapper = pb.Wrapper()
+    wrapper.ParseFromString(raw_record.data)
+
+    details = pb.GameDetailRecords()
+    details.ParseFromString(wrapper.data)
+
+    records = []
+
+    record_items = (
+        action.result for action in details.actions
+        if hasattr(action, "result") and len(action.result) > 0
+    )
+
+    for item in record_items:
+        round_record_wrapper = pb.Wrapper()
+        round_record_wrapper.ParseFromString(item)
+        round_record_classname = round_record_wrapper.name[4:]
+        round_record_class = getattr(pb, round_record_classname)
+        round_record = round_record_class()
+        round_record.ParseFromString(round_record_wrapper.data)
+
+        record = {
+                "name": round_record_classname,
+                "data": json.loads(MessageToJson(round_record)),
+        }
+
+        # set room-maker seat as 0
+        if "seat" not in record["data"] and round_record_classname != "RecordHule":
+            record["data"]["seat"] = 0
+
+        # set room-maker seat as 0
+        if round_record_classname == "RecordHule":
+            for hule in record["data"]["hules"]:
+                if "seat" not in hule:
+                    hule["seat"] = 0
+
+        records.append(record)
+
+    game_meta_data = json.loads(MessageToJson(raw_record))
+    if "data" in game_meta_data:
+        del game_meta_data["data"]
+
+    # remove privacy-sensitive information
+    accounts = []
+    for account in game_meta_data["head"]["accounts"]:
+        accounts.append(
+            {
+                "nickname": account["nickname"],
+                "seat": account.get("seat", 0)
+            }
+        )
+
+    # set room-maker seat as 0
+    for player in game_meta_data["head"]["result"]["players"]:
+        if "seat" not in player:
+            player["seat"] = 0
+
+    game_meta_data["head"]["accounts"] = accounts
+
+    log = {
+        "meta": game_meta_data["head"],
+        "records": records
+    }
+
+    with open("log.json", "w") as f:
+        f.write(json.dumps(log, separators=(',', ':')))
 
     return True
 
