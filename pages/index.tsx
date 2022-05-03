@@ -1,8 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import { getFourPlayerGameStats } from '../utils/log'
 
 const Home: NextPage = () => {
+  const fourPlayerGameStates = getFourPlayerGameStats();
+
   return (
     <div className={styles.container}>
       <Head>
@@ -36,14 +39,14 @@ const Home: NextPage = () => {
             </tr>
           </tfoot>
           <tbody>
-            {Array.from(Array(5)).map((_, i) => (
-              <tr key={`leader-table-${i}`}>
-                <th>{i + 1}</th>
-                <td>AA</td>
-                <td>AA</td>
-                <td>AA</td>
-                <td>AA</td>
-                <td>AA</td>
+            {fourPlayerGameStates.map(stat => (
+              <tr key={`leader-table-${stat.rank}`}>
+                <th>{stat.rank}</th>
+                <td>{stat.player}</td>
+                <td>1500</td>
+                <td>{stat.firstRatio}</td>
+                <td>{stat.upperSecondRatio}</td>
+                <td>{stat.totalGames}</td>
               </tr>))}
           </tbody>
         </table>
