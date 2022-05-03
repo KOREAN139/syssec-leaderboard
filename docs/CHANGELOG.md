@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.0.2...v1.0.3) (2022-05-03)
+
+
+### Bug Fixes
+
+* **build:** add asset prefix to serve static files ([2797631](https://github.com/KOREAN139/syssec-leaderboard/commit/27976314e9e315a268ad3a57429dd0f017867937))
+
 ## [1.0.2](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.0.1...v1.0.2) (2022-05-03)
 
 
