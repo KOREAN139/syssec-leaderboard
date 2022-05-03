@@ -11,9 +11,9 @@ def main():
     uuids = sys.argv[1:]
     for uuid in uuids:
         uuid = uuid.strip()
-        if uuid in analysis[uuids]:
+        if uuid in analysis["uuids"]:
             continue
-        analysis[uuids].append(uuid)
+        analysis["uuids"].append(uuid)
 
         num_of_players, result = analyze(uuid)
         mode = f"{num_of_players}player"
@@ -45,7 +45,7 @@ def get_previous_analysis():
 
     if os.path.exists(LOG_ANALYSIS_FILE_PATH):
         with open(LOG_ANALYSIS_FILE_PATH, "r") as f:
-            previous_analysis = json.load(f.read())
+            previous_analysis = json.load(f)
 
     return previous_analysis
 
