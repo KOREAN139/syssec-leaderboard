@@ -22,6 +22,7 @@ logging.basicConfig(
 )
 
 MS_HOST = "https://game.maj-soul.com"
+LOG_FOLDER = "../logs"
 
 async def main():
     """
@@ -176,7 +177,7 @@ def process_raw_record(raw_record):
     }
 
     game_uuid = log["meta"]["uuid"]
-    with open(f"../logs/{game_uuid}.json", "w") as f:
+    with open(f"{LOG_FOLDER}/{game_uuid}.json", "w") as f:
         f.write(json.dumps(log, separators=(',', ':')))
 
     return True
