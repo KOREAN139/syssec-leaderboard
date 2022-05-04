@@ -45,8 +45,8 @@ const Home: NextPage = () => {
                 <th>{stat.rank}</th>
                 <td>{stat.player}</td>
                 <td>1500</td>
-                <td>{stat.firstRatio}</td>
-                <td>{stat.upperSecondRatio}</td>
+                <td>{+stat.firstRatio.toFixed(2)}</td>
+                <td>{+stat.upperSecondRatio.toFixed(2)}</td>
                 <td>{stat.totalGames}</td>
               </tr>))}
           </tbody>
