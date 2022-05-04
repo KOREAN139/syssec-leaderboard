@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.0.4...v1.0.5) (2022-05-04)
+
+
+### Bug Fixes
+
+* **util:** 순위 로직에 12% 비교로직 추가 ([#10](https://github.com/KOREAN139/syssec-leaderboard/issues/10)) ([652bb5e](https://github.com/KOREAN139/syssec-leaderboard/commit/652bb5e867cf876fdc5d117b95c7de2628845092))
+
 ## [1.0.4](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.0.3...v1.0.4) (2022-05-04)
 
 
