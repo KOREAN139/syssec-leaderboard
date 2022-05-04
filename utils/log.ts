@@ -11,7 +11,7 @@ export const getFourPlayerGameStats = (): FourPlayerGameStat[] => {
 
 		return {
 			player,
-			"rank": i+1,
+			"rank": 0,
 			"firstRatio": numOfFirst / totalGames * 100,
 			"upperSecondRatio": (numOfFirst + numOfSecond) / totalGames * 100,
 			totalGames,
@@ -21,7 +21,7 @@ export const getFourPlayerGameStats = (): FourPlayerGameStat[] => {
 	const statSortFn = (playerA: FourPlayerGameStat, playerB: FourPlayerGameStat) => {
 	  return playerB.firstRatio - playerA.firstRatio;
 	};
-	fourPlayerGameStats.sort(statSortFn);
+	fourPlayerGameStats.sort(statSortFn).forEach((stat, i) => stat["rank"] = i + 1);
 
 	return fourPlayerGameStats;
 };
