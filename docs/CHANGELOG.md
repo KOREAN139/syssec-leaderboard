@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.0.3...v1.0.4) (2022-05-04)
+
+
+### Bug Fixes
+
+* **page:** 테이블 이슈 해결 ([#9](https://github.com/KOREAN139/syssec-leaderboard/issues/9)) ([d5559de](https://github.com/KOREAN139/syssec-leaderboard/commit/d5559de7f05e78b220294011278ec8e261939edb))
+
 ## [1.0.3](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.0.2...v1.0.3) (2022-05-03)
 
 
