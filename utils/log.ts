@@ -19,6 +19,9 @@ export const getFourPlayerGameStats = (): FourPlayerGameStat[] => {
 	});
 
 	const statSortFn = (playerA: FourPlayerGameStat, playerB: FourPlayerGameStat) => {
+		if (playerA.firstRatio == playerB.firstRatio) {
+			return playerB.upperSecondRatio - playerA.upperSecondRatio;
+		}
 	  return playerB.firstRatio - playerA.firstRatio;
 	};
 	fourPlayerGameStats.sort(statSortFn).forEach((stat, i) => stat["rank"] = i + 1);
