@@ -3,11 +3,9 @@ import logAnalysis from '@/public/log-analysis.json';
 
 export const getFourPlayerGameStats = (): FourPlayerGameStat[] => {
 	const fourPlayerGameLogs = logAnalysis["4player"] as RawFourPlayerGameStats;
-	const fourPlayerGameStats = Object.keys(fourPlayerGameLogs).map((player, i) => {
+	const fourPlayerGameStats = Object.keys(fourPlayerGameLogs).map(player => {
 		const gameStat = fourPlayerGameLogs[player];
-		const numOfFirst = gameStat["1"];
-		const numOfSecond = gameStat["2"];
-		const totalGames = gameStat["totalGames"];
+		const { "1": numOfFirst, "2": numOfSecond, totalGames } = gameStat;
 
 		return {
 			player,
