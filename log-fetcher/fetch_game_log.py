@@ -96,7 +96,7 @@ async def login(lobby, client_version_string):
     return True
 
 async def load_game_log(manager_api, client_version_string, game_uuid):
-    logging.info("Loading tournament log...")
+    logging.info(f"Loading tournament log {game_uuid}")
 
     req = pb.ReqGameRecord()
     req.game_uuid = game_uuid
@@ -112,6 +112,8 @@ async def load_game_log(manager_api, client_version_string, game_uuid):
     return True
 
 def process_raw_record(raw_record):
+    logging.info(f"Processing tournament log {game_uuid}")
+
     wrapper = pb.Wrapper()
     wrapper.ParseFromString(raw_record.data)
 
