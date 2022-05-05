@@ -109,7 +109,7 @@ def analyze_yaku(records):
 
 def update_analysis(analysis):
     with open(LOG_ANALYSIS_FILE_PATH, "w") as f:
-        f.write(json.dumps(analysis, separators=(',', ':')))
+        f.write(json.dumps(analysis, separators=(',', ':'), ensure_ascii=False))
 
     return True
 
