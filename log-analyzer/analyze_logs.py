@@ -61,9 +61,9 @@ def get_previous_analysis():
 
     return previous_analysis
 
-def analyze(game_uuid):
+def analyze(uuid):
     log = {}
-    with open(f"{LOG_FOLDER}/{game_uuid}.json", "r") as f:
+    with open(f"{LOG_FOLDER}/{uuid}.json", "r") as f:
         log = json.loads(f.read())
 
     metadata = log["meta"]
