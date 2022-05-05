@@ -3,6 +3,8 @@ import json
 import sys
 import logging
 
+from yaku import YAKU_MAP
+
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s %(levelname)s: %(message)s", datefmt="%Y-%m-%d %H:%M:%S"
 )
@@ -25,18 +27,24 @@ def main():
 
         num_of_players, result = analyze(uuid)
         mode = f"{num_of_players}player"
-        for player, rank in result.items():
+        for player, game_analysis in result.items():
             stat = analysis[mode].get(player, {
                 "total_games": 0,
                 "1": 0,
                 "2": 0,
                 "3": 0,
                 "4": 0,
+                "yakus": {},
             })
+
             stat["total_games"] += 1
-            stat[str(rank)] += 1
+            stat[str(game_analysis["rank"])] += 1
             if num_of_players == 3:
                 del stat["4"]
+
+            for yaku in game_analysis["yakus"]:
+                stat["yakus"][yaku] = stat["yakus"].get(yaku, 0) + 1
+
             analysis[mode][player] = stat
 
     update_analysis(analysis)
@@ -62,23 +70,46 @@ def analyze(game_uuid):
     with open(f"{LOG_FOLDER}/{game_uuid}.json", "r") as f:
         log = json.loads(f.read())
 
-    players = log["meta"]["result"]["players"]
+    metadata = log["meta"]
+    rank_analysis = analyze_rank(metadata)
+
+    records = log["records"]
+    yaku_analysis = analyze_yaku(records)
+
+    analysis = {}
+    for account in metadata["accounts"]:
+        analysis[account["nickname"]] = {
+            "rank": rank_analysis[account["seat"]],
+            "yakus": yaku_analysis.get(account["seat"], []),
+        }
+
+    return len(metadata["accounts"]), analysis
+
+def analyze_rank(metadata):
+    rank_analysis = {}
+    players = metadata["result"]["players"]
     def final_point(r):
         return r["partPoint1"]
     players.sort(key=final_point, reverse=True)
 
-    accounts = log["meta"]["accounts"]
-    analysis_result = {}
     for idx, player in enumerate(players):
         rank = idx + 1
-        account = next(account for account in accounts if account["seat"] == player["seat"])
-        analysis_result[account["nickname"]] = rank
+        rank_analysis[player["seat"]] = rank
+    return rank_analysis
 
-    return len(players), analysis_result
+def analyze_yaku(records):
+    yaku_analysis = {}
+    hule_records = [record for record in records if record["name"] == "RecordHule"]
+
+    for hule_record in hule_records:
+        for hule in hule_record["data"]["hules"]:
+            yakus = [YAKU_MAP[fan["id"]] for fan in hule["fans"]]
+            yaku_analysis[hule["seat"]] = yakus
+    return yaku_analysis
 
 def update_analysis(analysis):
     with open(LOG_ANALYSIS_FILE_PATH, "w") as f:
-        f.write(json.dumps(analysis, separators=(',', ':')))
+        f.write(json.dumps(analysis, separators=(',', ':'), ensure_ascii=False))
 
     return True
 
