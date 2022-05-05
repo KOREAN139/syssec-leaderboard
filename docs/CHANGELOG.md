@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.0.5...v1.0.6) (2022-05-05)
+
+
+### Bug Fixes
+
+* **fetcher:** RecordNewRound에 방장 seat 세팅 ([#11](https://github.com/KOREAN139/syssec-leaderboard/issues/11)) ([3c9fb59](https://github.com/KOREAN139/syssec-leaderboard/commit/3c9fb59816acc68d65c8bfe6e72f01525710faf5))
+
 ## [1.0.5](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.0.4...v1.0.5) (2022-05-04)
 
 
