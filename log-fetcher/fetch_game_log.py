@@ -139,7 +139,11 @@ def process_raw_record(raw_record):
         }
 
         # set room-maker seat as 0
-        if "seat" not in record["data"] and round_record_classname != "RecordHule":
+        if (
+            "seat" not in record["data"] and
+            round_record_classname != "RecordHule" and
+            round_record_classname != "RecordNewRound"
+           ):
             record["data"]["seat"] = 0
 
         # set room-maker seat as 0
@@ -147,6 +151,12 @@ def process_raw_record(raw_record):
             for hule in record["data"]["hules"]:
                 if "seat" not in hule:
                     hule["seat"] = 0
+
+        # set room-maker seat as 0
+        if round_record_classname == "RecordNewRound":
+            for op in record["data"]["opens"]:
+                if "seat" not in op:
+                    op["seat"] = 0
 
         records.append(record)
 
