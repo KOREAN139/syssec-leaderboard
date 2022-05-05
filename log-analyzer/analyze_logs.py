@@ -16,12 +16,8 @@ def main():
     analysis = get_previous_analysis()
 
     uuids = sys.argv[1:]
-    for uuid in uuids:
-        uuid = uuid.strip()
-        if uuid in analysis["uuids"]:
-            logging.info(f"Skip {uuid} - Previously analyzed")
-            continue
-
+    new_uuids = [uuid for uuid in uuids if uuid not in analysis["uuids"]]
+    for uuid in new_uuids:
         logging.info(f"Analyzing {uuid}")
         analysis["uuids"].append(uuid)
 
