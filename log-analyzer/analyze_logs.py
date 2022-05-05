@@ -3,7 +3,7 @@ import json
 import sys
 import logging
 
-from yaku import YAKU_MAP
+from yaku import IMPORTANT_YAKUS, YAKU_MAP
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s %(levelname)s: %(message)s", datefmt="%Y-%m-%d %H:%M:%S"
@@ -11,9 +11,11 @@ logging.basicConfig(
 
 LOG_FOLDER = "../logs"
 LOG_ANALYSIS_FILE_PATH = "../public/log-analysis.json"
+YAKUMAN_LOG_FILE_PATH = "../public/yakuman.json"
 
 def main():
     analysis = get_previous_analysis()
+    yakuman_log = get_previous_yakumans()
 
     uuids = sys.argv[1:]
     new_uuids = [uuid for uuid in uuids if uuid not in analysis["uuids"]]
@@ -21,7 +23,9 @@ def main():
         logging.info(f"Analyzing {uuid}")
         analysis["uuids"].append(uuid)
 
-        num_of_players, result = analyze(uuid)
+        num_of_players, result, yakumans = analyze(uuid)
+        yakuman_log += yakumans
+
         mode = f"{num_of_players}player"
         for player, game_analysis in result.items():
             stat = analysis[mode].get(player, {
@@ -44,6 +48,7 @@ def main():
             analysis[mode][player] = stat
 
     update_analysis(analysis)
+    update_yakumans(yakuman_log)
 
     return True
 
@@ -60,6 +65,15 @@ def get_previous_analysis():
 
     return previous_analysis
 
+def get_previous_yakumans():
+    previous_yakumans = []
+
+    if os.path.exists(YAKUMAN_LOG_FILE_PATH):
+        with open(YAKUMAN_LOG_FILE_PATH, "r") as f:
+            previous_yakumans = json.load(f)
+
+    return previous_yakumans
+
 def analyze(uuid):
     log = {}
     with open(f"{LOG_FOLDER}/{uuid}.json", "r") as f:
@@ -69,7 +83,13 @@ def analyze(uuid):
     rank_analysis = analyze_rank(metadata)
 
     records = log["records"]
-    yaku_analysis = analyze_yaku(records)
+    yaku_analysis, yakumans = analyze_yaku(records)
+
+    seat_nickname_map = {acc["seat"]: acc["nickname"] for acc in metadata["accounts"]}
+    for yakuman in yakumans:
+        yakuman["nickname"] = seat_nickname_map[yakuman["seat"]]
+        yakuman["timestamp"] = metadata["startTime"]
+        del yakuman["seat"]
 
     analysis = {}
     for account in metadata["accounts"]:
@@ -78,7 +98,7 @@ def analyze(uuid):
             "yakus": yaku_analysis.get(account["seat"], []),
         }
 
-    return len(metadata["accounts"]), analysis
+    return len(metadata["accounts"]), analysis, yakumans
 
 def analyze_rank(metadata):
     rank_analysis = {}
@@ -94,17 +114,44 @@ def analyze_rank(metadata):
 
 def analyze_yaku(records):
     yaku_analysis = {}
+    yakumans = []
     hule_records = [record for record in records if record["name"] == "RecordHule"]
 
     for hule_record in hule_records:
         for hule in hule_record["data"]["hules"]:
             yakus = [YAKU_MAP[fan["id"]] for fan in hule["fans"]]
             yaku_analysis[hule["seat"]] = yakus
-    return yaku_analysis
+
+            yakuman = check_yakuman(yakus, hule["count"])
+            if not yakuman:
+                continue
+
+            hule["fans"] = [{"val": fan["val"], "yaku": YAKU_MAP[fan["id"]]} for fan in hule["fans"]]
+            yakumans.append({
+                "seat": hule["seat"],
+                "yakumans": yakuman,
+                "hules": hule,
+                "point": [score for score in hule_record["data"]["deltaScores"] if score > 0][0],
+            })
+
+    return yaku_analysis, yakumans
+
+def check_yakuman(yakus, fan_count):
+    yakuman = [yaku for yaku in yakus if yaku in IMPORTANT_YAKUS]
+    if not yakuman and fan_count >= 13:
+        yakuman = ["헤아림역만"]
+
+    return yakuman
 
 def update_analysis(analysis):
     with open(LOG_ANALYSIS_FILE_PATH, "w") as f:
         f.write(json.dumps(analysis, separators=(',', ':'), ensure_ascii=False))
+
+    return True
+
+def update_yakumans(yakuman_log):
+    with open(YAKUMAN_LOG_FILE_PATH, "w") as f:
+        f.write(json.dumps(yakuman_log, separators=(',', ':'), ensure_ascii=False))
 
     return True
 
