@@ -25,7 +25,6 @@ const Home: NextPage = () => {
               <tr>
                 <th>순위</th>
                 <td>이름</td>
-                <td>Elo</td>
                 <td>1%<sup>*</sup></td>
                 <td>12%<sup>**</sup></td>
                 <td>국수</td>
@@ -44,7 +43,6 @@ const Home: NextPage = () => {
               <tr key={`leader-table-${stat.rank}`}>
                 <th>{stat.rank}</th>
                 <td>{stat.player}</td>
-                <td>1500</td>
                 <td>{+stat.firstRatio.toFixed(2)}</td>
                 <td>{+stat.upperSecondRatio.toFixed(2)}</td>
                 <td>{stat.totalGames}</td>
