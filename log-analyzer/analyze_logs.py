@@ -3,6 +3,8 @@ import json
 import sys
 import logging
 
+from yaku import YAKU_MAP
+
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s %(levelname)s: %(message)s", datefmt="%Y-%m-%d %H:%M:%S"
 )
@@ -25,18 +27,28 @@ def main():
 
         num_of_players, result = analyze(uuid)
         mode = f"{num_of_players}player"
-        for player, rank in result.items():
+        for player, game_stat in result.items():
             stat = analysis[mode].get(player, {
                 "total_games": 0,
                 "1": 0,
                 "2": 0,
                 "3": 0,
                 "4": 0,
+                "yakus": {},
             })
+
+            # Count up rank
             stat["total_games"] += 1
-            stat[str(rank)] += 1
+            stat[str(game_stat["rank"])] += 1
             if num_of_players == 3:
                 del stat["4"]
+
+            # Count up yaku
+            if "yakus" not in game_stat:
+                continue
+            for yaku in game_stat["yakus"]:
+                stat["yakus"][yaku] = stat["yakus"].get(yaku, 0) + 1
+
             analysis[mode][player] = stat
 
     update_analysis(analysis)
@@ -67,12 +79,21 @@ def analyze(game_uuid):
         return r["partPoint1"]
     players.sort(key=final_point, reverse=True)
 
+    # Analyze ranks
     accounts = log["meta"]["accounts"]
     analysis_result = {}
     for idx, player in enumerate(players):
         rank = idx + 1
         account = next(account for account in accounts if account["seat"] == player["seat"])
-        analysis_result[account["nickname"]] = rank
+        analysis_result[account["nickname"]] = { "rank": rank }
+
+    # Analyze yakus
+    hule_records = [record for record in log["records"] if record["name"] == "RecordHule"]
+    for hule_record in hule_records:
+        for hule in hule_record["data"]["hules"]:
+            yakus = [YAKU_MAP[fan["id"]] for fan in hule["fans"]]
+            account = next(account for account in accounts if account["seat"] == hule["seat"])
+            analysis_result[account["nickname"]]["yakus"] = yakus
 
     return len(players), analysis_result
 
