@@ -16,12 +16,8 @@ def main():
     analysis = get_previous_analysis()
 
     uuids = sys.argv[1:]
-    for uuid in uuids:
-        uuid = uuid.strip()
-        if uuid in analysis["uuids"]:
-            logging.info(f"Skip {uuid} - Previously analyzed")
-            continue
-
+    new_uuids = [uuid for uuid in uuids if uuid not in analysis["uuids"]]
+    for uuid in new_uuids:
         logging.info(f"Analyzing {uuid}")
         analysis["uuids"].append(uuid)
 
@@ -29,7 +25,7 @@ def main():
         mode = f"{num_of_players}player"
         for player, game_analysis in result.items():
             stat = analysis[mode].get(player, {
-                "total_games": 0,
+                "totalGames": 0,
                 "1": 0,
                 "2": 0,
                 "3": 0,
@@ -37,7 +33,7 @@ def main():
                 "yakus": {},
             })
 
-            stat["total_games"] += 1
+            stat["totalGames"] += 1
             stat[str(game_analysis["rank"])] += 1
             if num_of_players == 3:
                 del stat["4"]
@@ -50,7 +46,6 @@ def main():
     update_analysis(analysis)
 
     return True
-
 
 def get_previous_analysis():
     previous_analysis = {
@@ -65,9 +60,9 @@ def get_previous_analysis():
 
     return previous_analysis
 
-def analyze(game_uuid):
+def analyze(uuid):
     log = {}
-    with open(f"{LOG_FOLDER}/{game_uuid}.json", "r") as f:
+    with open(f"{LOG_FOLDER}/{uuid}.json", "r") as f:
         log = json.loads(f.read())
 
     metadata = log["meta"]

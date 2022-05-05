@@ -28,12 +28,15 @@ async def main():
     """
     Login to the CN server get tournament log.
     """
-    game_uuids = sys.argv[1:]
+    log_files = [f for f in os.listdir(LOG_FOLDER) if ".json" in f]
+
+    uuids = sys.argv[1:]
+    new_uuids = [uuid for uuid in uuids if uuid + ".json" not in log_files]
 
     lobby, channel, client_version_string = await connect()
     await login(lobby, client_version_string)
-    for game_uuid in game_uuids:
-        await load_game_log(lobby, client_version_string, game_uuid.strip())
+    for uuid in new_uuids:
+        await load_game_log(lobby, client_version_string, uuid.strip())
     await channel.close()
 
 
@@ -95,11 +98,11 @@ async def login(lobby, client_version_string):
 
     return True
 
-async def load_game_log(manager_api, client_version_string, game_uuid):
-    logging.info(f"Loading tournament log {game_uuid}")
+async def load_game_log(manager_api, client_version_string, uuid):
+    logging.info(f"Loading tournament log {uuid}")
 
     req = pb.ReqGameRecord()
-    req.game_uuid = game_uuid
+    req.game_uuid = uuid
     req.client_version_string = client_version_string
 
     res = await manager_api.fetch_game_record(req)
@@ -112,8 +115,6 @@ async def load_game_log(manager_api, client_version_string, game_uuid):
     return True
 
 def process_raw_record(raw_record):
-    logging.info(f"Processing tournament log {game_uuid}")
-
     wrapper = pb.Wrapper()
     wrapper.ParseFromString(raw_record.data)
 
@@ -188,8 +189,8 @@ def process_raw_record(raw_record):
         "records": records
     }
 
-    game_uuid = log["meta"]["uuid"]
-    with open(f"{LOG_FOLDER}/{game_uuid}.json", "w") as f:
+    uuid = log["meta"]["uuid"]
+    with open(f"{LOG_FOLDER}/{uuid}.json", "w") as f:
         f.write(json.dumps(log, separators=(',', ':')))
 
     return True
