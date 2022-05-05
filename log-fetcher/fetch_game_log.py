@@ -96,7 +96,7 @@ async def login(lobby, client_version_string):
     return True
 
 async def load_game_log(manager_api, client_version_string, game_uuid):
-    logging.info("Loading tournament log...")
+    logging.info(f"Loading tournament log {game_uuid}")
 
     req = pb.ReqGameRecord()
     req.game_uuid = game_uuid
@@ -112,6 +112,8 @@ async def load_game_log(manager_api, client_version_string, game_uuid):
     return True
 
 def process_raw_record(raw_record):
+    logging.info(f"Processing tournament log {game_uuid}")
+
     wrapper = pb.Wrapper()
     wrapper.ParseFromString(raw_record.data)
 
@@ -139,7 +141,11 @@ def process_raw_record(raw_record):
         }
 
         # set room-maker seat as 0
-        if "seat" not in record["data"] and round_record_classname != "RecordHule":
+        if (
+            "seat" not in record["data"] and
+            round_record_classname != "RecordHule" and
+            round_record_classname != "RecordNewRound"
+           ):
             record["data"]["seat"] = 0
 
         # set room-maker seat as 0
@@ -147,6 +153,12 @@ def process_raw_record(raw_record):
             for hule in record["data"]["hules"]:
                 if "seat" not in hule:
                     hule["seat"] = 0
+
+        # set room-maker seat as 0
+        if round_record_classname == "RecordNewRound":
+            for op in record["data"]["opens"]:
+                if "seat" not in op:
+                    op["seat"] = 0
 
         records.append(record)
 
