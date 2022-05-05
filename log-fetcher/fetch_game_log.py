@@ -28,12 +28,15 @@ async def main():
     """
     Login to the CN server get tournament log.
     """
-    game_uuids = sys.argv[1:]
+    log_files = [f for f in os.listdir(LOG_FOLDER) if ".json" in f]
+
+    uuids = sys.argv[1:]
+    new_uuids = [uuid for uuid in uuids if uuid + ".json" not in log_files]
 
     lobby, channel, client_version_string = await connect()
     await login(lobby, client_version_string)
-    for game_uuid in game_uuids:
-        await load_game_log(lobby, client_version_string, game_uuid.strip())
+    for uuid in new_uuids:
+        await load_game_log(lobby, client_version_string, uuid.strip())
     await channel.close()
 
 
