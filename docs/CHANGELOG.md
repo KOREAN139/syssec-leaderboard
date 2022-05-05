@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.0.6...v1.1.0) (2022-05-05)
+
+
+### Features
+
+* **analyzer:** 역 정보를 저장합니다 ([#12](https://github.com/KOREAN139/syssec-leaderboard/issues/12)) ([6afbab0](https://github.com/KOREAN139/syssec-leaderboard/commit/6afbab048aaa42ddf365238ec602870575462342))
+
 ## [1.0.6](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.0.5...v1.0.6) (2022-05-05)
 
 
