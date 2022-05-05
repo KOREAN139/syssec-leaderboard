@@ -9,7 +9,7 @@ export interface RawThreePlayerGameStats {
 }
 
 export interface RawThreePlayerGameStat {
-	total_games: number;
+	totalGames: number;
 	"1": number;
 	"2": number;
 	"3": number;

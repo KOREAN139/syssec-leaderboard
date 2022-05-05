@@ -25,7 +25,7 @@ def main():
         mode = f"{num_of_players}player"
         for player, game_analysis in result.items():
             stat = analysis[mode].get(player, {
-                "total_games": 0,
+                "totalGames": 0,
                 "1": 0,
                 "2": 0,
                 "3": 0,
@@ -33,7 +33,7 @@ def main():
                 "yakus": {},
             })
 
-            stat["total_games"] += 1
+            stat["totalGames"] += 1
             stat[str(game_analysis["rank"])] += 1
             if num_of_players == 3:
                 del stat["4"]
@@ -46,7 +46,6 @@ def main():
     update_analysis(analysis)
 
     return True
-
 
 def get_previous_analysis():
     previous_analysis = {

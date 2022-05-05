@@ -7,7 +7,7 @@ export const getFourPlayerGameStats = (): FourPlayerGameStat[] => {
 		const gameStat = fourPlayerGameLogs[player];
 		const numOfFirst = gameStat["1"];
 		const numOfSecond = gameStat["2"];
-		const totalGames = gameStat["total_games"];
+		const totalGames = gameStat["totalGames"];
 
 		return {
 			player,
