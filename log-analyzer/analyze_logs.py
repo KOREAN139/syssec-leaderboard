@@ -39,7 +39,7 @@ def main():
 
             stat["totalGames"] += 1
             stat[str(game_analysis["rank"])] += 1
-            if num_of_players == 3:
+            if num_of_players == 3 and "4" in stat:
                 del stat["4"]
 
             for yaku in game_analysis["yakus"]:
