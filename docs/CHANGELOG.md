@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.3.0...v1.3.1) (2022-05-10)
+
+
+### Bug Fixes
+
+* **fetcher:** 1인 게임 로그는 스킵하도록 수정 ([#19](https://github.com/KOREAN139/syssec-leaderboard/issues/19)) ([24a551e](https://github.com/KOREAN139/syssec-leaderboard/commit/24a551ef33023a353d3959ad5210be9a9aaf0138))
+
 # [1.3.0](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.2.0...v1.3.0) (2022-05-10)
 
 
