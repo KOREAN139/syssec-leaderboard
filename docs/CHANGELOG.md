@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.2.0...v1.3.0) (2022-05-10)
+
+
+### Features
+
+* **scraper:** UUID 스크래핑 userscript 작성 ([#16](https://github.com/KOREAN139/syssec-leaderboard/issues/16)) ([fe1b137](https://github.com/KOREAN139/syssec-leaderboard/commit/fe1b1377d018f2f40637beeca1c8aa639c503e0e))
+
 # [1.2.0](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.1.0...v1.2.0) (2022-05-05)
 
 
