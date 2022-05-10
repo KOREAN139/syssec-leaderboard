@@ -3,8 +3,11 @@
 // @version      0.0.1
 // @author       Sanggu Han
 // @description  Copies uuid of friendly games in mahjong soul
+// @homepage     https://greasyfork.org/en/scripts/444785
+// @homepageURL  https://greasyfork.org/en/scripts/444785
 // @supportURL   https://github.com/KOREAN139/syssec-leaderboard/issues
 // @namespace    mjuuidscraper
+// @license      MIT
 // @match        https://game.mahjongsoul.com/*
 // ==/UserScript==
 
