@@ -164,6 +164,9 @@ def process_raw_record(raw_record):
         records.append(record)
 
     game_meta_data = json.loads(MessageToJson(raw_record))
+    if len(game_meta_data["head"]["accounts"]) < 3:
+        return False
+
     if "data" in game_meta_data:
         del game_meta_data["data"]
 
