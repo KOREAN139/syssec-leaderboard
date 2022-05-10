@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.3.1...v1.3.2) (2022-05-10)
+
+
+### Bug Fixes
+
+* **analyzer:** 키 삭제 전 존재 확인하는 로직 추가 ([#20](https://github.com/KOREAN139/syssec-leaderboard/issues/20)) ([b41ce81](https://github.com/KOREAN139/syssec-leaderboard/commit/b41ce810119dbc4a00ff6cadcac3ba96c7a47d45))
+
 ## [1.3.1](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.3.0...v1.3.1) (2022-05-10)
 
 
