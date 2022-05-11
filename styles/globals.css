@@ -5,6 +5,10 @@ body {
   font-family: 'Pretendard Variable', sans-serif;
 }
 
+body {
+  padding: 0 2rem;
+}
+
 a {
   color: inherit;
   text-decoration: none;
