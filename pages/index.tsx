@@ -43,24 +43,13 @@ const Home: NextPage = () => {
               <tr key={`leader-table-${stat.rank}`}>
                 <th>{stat.rank}</th>
                 <td>{stat.player}</td>
-                <td>{+stat.firstRatio.toFixed(2)}</td>
-                <td>{+stat.upperSecondRatio.toFixed(2)}</td>
+                <td>{+stat.firstRatio.toFixed(1)}</td>
+                <td>{+stat.upperSecondRatio.toFixed(1)}</td>
                 <td>{stat.totalGames}</td>
               </tr>))}
           </tbody>
         </table>
-        
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://github.com/KOREAN139"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Maintained by 한상구
-        </a>
-      </footer>
     </div>
   )
 }
