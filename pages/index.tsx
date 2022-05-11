@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import { getFourPlayerGameStats } from '@/utils/log'
 
@@ -8,14 +7,6 @@ const Home: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Syssec 마작 리더보드</title>
-        <meta name="description" content="Syssec majsoul leaderboard" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" as="style" crossOrigin="true" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
-      </Head>
-
-      <main className={styles.main}>
         <h1 className={styles.title}>
           Syssec 마작 리더보드
         </h1>
@@ -49,7 +40,6 @@ const Home: NextPage = () => {
               </tr>))}
           </tbody>
         </table>
-      </main>
     </div>
   )
 }

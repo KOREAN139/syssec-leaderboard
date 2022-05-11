@@ -1,8 +1,4 @@
 .container {
-  padding: 0 2rem;
-}
-
-.main {
   padding: 3rem 0;
   flex: 1;
   display: flex;
