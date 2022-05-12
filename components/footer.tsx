@@ -1,7 +1,7 @@
-import type { NextPage } from 'next'
+import type { NextComponentType } from 'next'
 import styles from '@/styles/Footer.module.css'
 
-const Footer: NextPage = () => {
+const Footer: NextComponentType = () => {
   return (
     <footer className={styles.footer}>
     <a
