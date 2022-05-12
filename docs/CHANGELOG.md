@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.3.2...v1.4.0) (2022-05-12)
+
+
+### Features
+
+* **page:** 역만 테이블 와이어프레임 추가 ([#25](https://github.com/KOREAN139/syssec-leaderboard/issues/25)) ([a0e65f8](https://github.com/KOREAN139/syssec-leaderboard/commit/a0e65f8c136b01e867b0465143798df01180b4f0))
+
 ## [1.3.2](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.3.1...v1.3.2) (2022-05-10)
 
 
