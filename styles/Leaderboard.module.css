@@ -1,0 +1,38 @@
+.board {
+  margin-top: 3rem;
+  border-collapse: collapse;
+  text-align: center;
+  line-height: 1.5rem;
+}
+
+.board sup {
+  line-height: 0;
+}
+
+.board tr {
+  border-bottom: 1px solid #000;
+}
+
+.board th {
+  width: 4rem;
+}
+
+.board td {
+  width: 5.5rem;
+}
+
+.board .nickname {
+  width: 8rem;
+}
+
+.board tfoot td {
+  text-align: left;
+  vertical-align: bottom;
+  font-size: 0.8rem;
+  height: 2rem;
+  border: none;
+}
+
+.board tfoot tr {
+  border-bottom: none;
+}
