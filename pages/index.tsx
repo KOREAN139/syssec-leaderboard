@@ -12,8 +12,16 @@ const Home: NextPage = () => {
   // handle mobile vh issue
   // ref: https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
   useEffect(() => {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    const setVh = () =>
+      document.documentElement.style.setProperty(
+        '--vh',
+        `${window.innerHeight * 0.01}px`
+      );
+
+    setVh();
+    window.addEventListener('resize', setVh, false);
+
+    return () => window.removeEventListener('resize', setVh, false);
   }, []);
 
   const onScroll = useCallback((e: Event) => {
