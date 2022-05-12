@@ -2,11 +2,12 @@ import type { NextPage } from 'next'
 import styles from '@/styles/Home.module.css'
 import YakumanBoard from '@/components/yakuman-board';
 import Leaderboard from '@/components/leaderboard';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const Home: NextPage = () => {
   const [sectionNumber, setSectionNumber] = useState(0);
   const [lastTop, setLastTop] = useState(0);
+  const titleRef = useRef<HTMLDivElement>(null);
   const numberOfSections = 2;
 
   // handle mobile vh issue
@@ -25,39 +26,43 @@ const Home: NextPage = () => {
   }, []);
 
   const onScroll = useCallback((e: Event) => {
+    if (!titleRef.current) {
+      return;
+    }
+
     e.preventDefault();
     e.stopPropagation();
 
+    const titleContainer = titleRef.current;
     const mainContainer = e.target as HTMLDivElement;
     const currentTop = mainContainer.scrollTop;
     const currentViewHeight = window.innerHeight;
+    let sectionDiff = 0;
 
-    const titleContainer = document.getElementsByClassName('table-titles')[0] as HTMLDivElement;
 
     if (lastTop > currentTop &&
       sectionNumber > 0 &&
       currentTop < sectionNumber * currentViewHeight) {
-      titleContainer.style.transform = `translateY(-${(sectionNumber - 1) * 3}rem)`;
-      mainContainer.scrollTo({
-        top: (sectionNumber - 1) * currentViewHeight,
-        behavior: 'smooth'
-      });
-      setSectionNumber(sectionNumber - 1);
+      sectionDiff = -1;
     }
 
     if (lastTop < currentTop &&
       sectionNumber < numberOfSections - 1 &&
       currentTop > sectionNumber * currentViewHeight) {
-      titleContainer.style.transform = `translateY(-${(sectionNumber + 1) * 3}rem)`;
+      sectionDiff = 1;
+    }
+
+    if (sectionDiff) {
+      titleContainer.style.transform = `translateY(-${(sectionNumber + sectionDiff) * 3}rem)`;
       mainContainer.scrollTo({
-        top: (sectionNumber + 1) * currentViewHeight,
+        top: (sectionNumber + sectionDiff) * currentViewHeight,
         behavior: 'smooth'
       });
-      setSectionNumber(sectionNumber + 1);
+      setSectionNumber(sectionNumber + sectionDiff);
     }
 
     setLastTop(currentTop);
-  }, [sectionNumber, lastTop]);
+  }, [titleRef, sectionNumber, lastTop]);
 
   useEffect(() => {
     const container = document.querySelector('main');
@@ -82,7 +87,7 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.title}>
-        <h1 className={'table-titles'}>
+        <h1 ref={titleRef}>
           4인 동장 & 4인 반장 <br />
           역만
         </h1>

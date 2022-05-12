@@ -1,7 +1,7 @@
 import type { NextComponentType } from 'next'
 import styles from '@/styles/YakumanBoard.module.css'
+import TableContainer from '@/components/table-container';
 import { getYakumanHistories } from '@/utils/log'
-import TableContainer from './table-container';
 
 const YakumanBoard: NextComponentType = () => {
   const yakumanHistories = getYakumanHistories();
