@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.5.0...v1.5.1) (2022-05-12)
+
+
+### Bug Fixes
+
+* **page:** 리사이즈시 vh 세팅 대응 ([#33](https://github.com/KOREAN139/syssec-leaderboard/issues/33)) ([baf2008](https://github.com/KOREAN139/syssec-leaderboard/commit/baf200834fe6c5f0cf3f92fd4a6cea170170536a))
+
 # [1.5.0](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.4.1...v1.5.0) (2022-05-12)
 
 
