@@ -1,10 +1,10 @@
 import type { NextPage } from 'next'
 import styles from '@/styles/Home.module.css'
-import { getFourPlayerGameStats, getYakumanHistories } from '@/utils/log'
+import { getFourPlayerGameStats } from '@/utils/log'
+import YakumanBoard from '@/components/yakuman-board';
 
 const Home: NextPage = () => {
   const fourPlayerGameStates = getFourPlayerGameStats();
-  const yakumanHistories = getYakumanHistories();
 
   return (
     <div className={styles.container}>
@@ -41,19 +41,7 @@ const Home: NextPage = () => {
             </tr>))}
         </tbody>
       </table>
-
-      {yakumanHistories.map(({ yakumans, nickname, hand, huTile }, i) => (
-        <table className={styles.yakumanboard} key={`yakuman-${i}`}>
-          <tbody>
-            <tr>
-              <th colSpan={2}>{nickname}</th>
-            </tr>
-            <tr className={styles.yakuman}>
-              <td className={styles.name}>{yakumans.join("\n")}</td>
-              <td className={styles.hand}>{hand.join("") + " " + huTile}</td>
-            </tr>
-          </tbody>
-        </table>))}
+      <YakumanBoard />
     </div>
   )
 }
