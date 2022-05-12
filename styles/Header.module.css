@@ -1,0 +1,14 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3rem;
+}
+
+.title {
+  text-align: center;
+  height: 3rem;
+  line-height: 3rem;
+  font-size: 2rem;
+}

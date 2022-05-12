@@ -1,5 +1,6 @@
-import Footer from '@/components/footer';
 import Head from 'next/head';
+import Footer from '@/components/footer';
+import Header from '@/components/header';
 import styles from '@/styles/Layout.module.css';
 
 type LayoutProps = {
@@ -15,6 +16,7 @@ const Layout = ({ children }: LayoutProps) => {
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" as="style" crossOrigin="true" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
       </Head>
+      <Header />
       <main className={styles.main}>{children}</main>
       <Footer />
     </>
