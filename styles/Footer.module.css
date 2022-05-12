@@ -1,4 +1,10 @@
 .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3rem;
+
     display: flex;
     flex: 1;
     padding: 1rem 0;
