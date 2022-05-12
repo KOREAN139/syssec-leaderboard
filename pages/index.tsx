@@ -31,29 +31,29 @@ const Home: NextPage = () => {
     const mainContainer = e.target as HTMLDivElement;
     const currentTop = mainContainer.scrollTop;
     const currentViewHeight = window.innerHeight;
+    let sectionDiff = 0;
 
     const titleContainer = document.getElementsByClassName('table-titles')[0] as HTMLDivElement;
 
     if (lastTop > currentTop &&
       sectionNumber > 0 &&
       currentTop < sectionNumber * currentViewHeight) {
-      titleContainer.style.transform = `translateY(-${(sectionNumber - 1) * 3}rem)`;
-      mainContainer.scrollTo({
-        top: (sectionNumber - 1) * currentViewHeight,
-        behavior: 'smooth'
-      });
-      setSectionNumber(sectionNumber - 1);
+      sectionDiff = -1;
     }
 
     if (lastTop < currentTop &&
       sectionNumber < numberOfSections - 1 &&
       currentTop > sectionNumber * currentViewHeight) {
-      titleContainer.style.transform = `translateY(-${(sectionNumber + 1) * 3}rem)`;
+      sectionDiff = 1;
+    }
+
+    if (sectionDiff) {
+      titleContainer.style.transform = `translateY(-${(sectionNumber + sectionDiff) * 3}rem)`;
       mainContainer.scrollTo({
-        top: (sectionNumber + 1) * currentViewHeight,
+        top: (sectionNumber + sectionDiff) * currentViewHeight,
         behavior: 'smooth'
       });
-      setSectionNumber(sectionNumber + 1);
+      setSectionNumber(sectionNumber + sectionDiff);
     }
 
     setLastTop(currentTop);
