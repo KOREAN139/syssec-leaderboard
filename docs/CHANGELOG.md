@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.4.0...v1.4.1) (2022-05-12)
+
+
+### Bug Fixes
+
+* **page:** 랜딩페이지 패딩 제거 ([#30](https://github.com/KOREAN139/syssec-leaderboard/issues/30)) ([a2bf0aa](https://github.com/KOREAN139/syssec-leaderboard/commit/a2bf0aa333bc9178f9d4439f3475953e3ccdb180))
+
 # [1.4.0](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.3.2...v1.4.0) (2022-05-12)
 
 
