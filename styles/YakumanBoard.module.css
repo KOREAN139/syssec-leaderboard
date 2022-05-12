@@ -1,0 +1,26 @@
+.board {
+  margin-top: 3rem;
+  border-collapse: collapse;
+}
+
+.board tr {
+  border-bottom: 1px solid #000;
+}
+
+.board td {
+  text-align: center;
+  line-height: 1.5rem;
+}
+
+.board .yakuman {
+  font-family: 'SangSangRock';
+  height: 4.5rem;
+}
+
+.board .yakuman .name {
+  width: 8rem;
+}
+
+.board .yakuman .hand {
+  width: 20.5rem;
+}
