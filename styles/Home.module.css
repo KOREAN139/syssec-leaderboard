@@ -45,3 +45,22 @@
   height: 2rem;
   border: none;
 }
+
+.yakumanboard {
+  margin-top: 3rem;
+  border-collapse: collapse;
+}
+
+.yakumanboard tr {
+  border-bottom: 1px solid #000;
+}
+
+.yakumanboard th,
+.yakumanboard td {
+  text-align: center;
+  line-height: 1.5rem;
+}
+
+.yakumanboard .yakuman {
+  font-family: 'SangSangRock';
+}
