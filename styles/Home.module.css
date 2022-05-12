@@ -35,7 +35,15 @@
 .leaderboard td {
   text-align: center;
   line-height: 1.5rem;
-  width: 5rem;
+  width: 5.5rem;
+}
+
+.leaderboard th {
+  width: 4rem;
+}
+
+.leaderboard .nickname {
+  width: 8rem;
 }
 
 .leaderboard tfoot td {

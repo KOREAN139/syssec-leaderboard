@@ -34,7 +34,7 @@ const Home: NextPage = () => {
           {fourPlayerGameStates.map(stat => (
             <tr key={`leader-table-${stat.rank}`}>
               <th>{stat.rank}</th>
-              <td>{stat.player}</td>
+              <td className={styles.nickname}>{stat.player}</td>
               <td>{+stat.firstRatio.toFixed(1)}</td>
               <td>{+stat.upperSecondRatio.toFixed(1)}</td>
               <td>{stat.totalGames}</td>
