@@ -7,7 +7,14 @@ import { useCallback, useEffect, useState } from 'react';
 const Home: NextPage = () => {
   const [sectionNumber, setSectionNumber] = useState(0);
   const [lastTop, setLastTop] = useState(0);
-  const numberOfSections = 3;
+  const numberOfSections = 2;
+
+  // handle mobile vh issue
+  // ref: https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
+  useEffect(() => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }, []);
 
   const onScroll = useCallback((e: Event) => {
     e.preventDefault();
