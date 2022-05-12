@@ -1,5 +1,7 @@
 import { FourPlayerGameStat, RawFourPlayerGameStats } from '@/models/log-analysis';
+import { YakumanHistory } from '@/models/yakuman';
 import logAnalysis from '@/public/log-analysis.json';
+import yakumanLog from '@/public/yakuman.json';
 
 export const getFourPlayerGameStats = (): FourPlayerGameStat[] => {
 	const fourPlayerGameLogs = logAnalysis["4player"] as RawFourPlayerGameStats;
@@ -25,4 +27,16 @@ export const getFourPlayerGameStats = (): FourPlayerGameStat[] => {
 	fourPlayerGameStats.sort(statSortFn).forEach((stat, i) => stat["rank"] = i + 1);
 
 	return fourPlayerGameStats;
+};
+
+export const getYakumanHistories = (): YakumanHistory[] => {
+	const yakumanHistories = yakumanLog.map(({ yakumans, hules, nickname, timestamp }) => ({
+		yakumans,
+		nickname,
+		timestamp,
+		hand: hules["hand"],
+		huTile: hules["huTile"],
+	}));
+
+	return yakumanHistories;
 };
