@@ -1,12 +1,13 @@
 import type { NextComponentType } from 'next'
 import styles from '@/styles/Leaderboard.module.css'
 import { getFourPlayerGameStats } from '@/utils/log'
+import TableContainer from './table-container';
 
 const Leaderboard: NextComponentType = () => {
   const fourPlayerGameStates = getFourPlayerGameStats();
 
   return (
-    <div className={styles.container}>
+    <TableContainer>
       <table className={styles.board}>
         <thead>
           <tr>
@@ -36,7 +37,7 @@ const Leaderboard: NextComponentType = () => {
             </tr>))}
         </tbody>
       </table>
-    </div>
+    </TableContainer>
   )
 }
 

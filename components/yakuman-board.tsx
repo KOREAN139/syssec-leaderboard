@@ -1,12 +1,13 @@
 import type { NextComponentType } from 'next'
 import styles from '@/styles/YakumanBoard.module.css'
 import { getYakumanHistories } from '@/utils/log'
+import TableContainer from './table-container';
 
 const YakumanBoard: NextComponentType = () => {
   const yakumanHistories = getYakumanHistories();
 
   return (
-    <div className={styles.container}>
+    <TableContainer>
       {yakumanHistories.map(({ yakumans, nickname, hand, huTile }, i) => (
         <table className={styles.board} key={`yakuman-${i}`}>
           <tbody>
@@ -19,7 +20,7 @@ const YakumanBoard: NextComponentType = () => {
             </tr>
           </tbody>
         </table>))}
-    </div>
+    </TableContainer>
   )
 }
 
