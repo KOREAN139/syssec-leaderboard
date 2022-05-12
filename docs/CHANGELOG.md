@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.4.1...v1.5.0) (2022-05-12)
+
+
+### Features
+
+* **page:** 스크롤로 테이블 넘기는 기능 구현 ([#32](https://github.com/KOREAN139/syssec-leaderboard/issues/32)) ([f9af2ad](https://github.com/KOREAN139/syssec-leaderboard/commit/f9af2ad976a129380b4e194cd9ca0d5ed38e1315))
+
 ## [1.4.1](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.4.0...v1.4.1) (2022-05-12)
 
 
