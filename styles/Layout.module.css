@@ -1,1 +1,12 @@
-.main {}
+.main {
+  height: 100vh;
+  overflow: scroll;
+
+  /* hide scrollbar */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.main::-webkit-scrollbar {
+  display: none;
+}

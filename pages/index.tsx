@@ -6,10 +6,6 @@ import Leaderboard from '@/components/leaderboard';
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>
-        Syssec 마작 리더보드
-      </h1>
-
       <Leaderboard />
       <YakumanBoard />
     </div>
