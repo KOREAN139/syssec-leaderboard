@@ -42,23 +42,18 @@ const Home: NextPage = () => {
         </tbody>
       </table>
 
-      <table className={styles.yakumanboard}>
-        <thead>
-          <tr>
-            <th>이름</th>
-            <td>역만</td>
-            <td>패</td>
-          </tr>
-        </thead>
-        <tbody>
-          {yakumanHistories.map(({ yakumans, nickname, hand, huTile }, i) => (
-            <tr key={`yakuman-table-${i}`}>
-              <th>{nickname}</th>
-              <td className={styles.yakuman}>{yakumans.join(" ")}</td>
-              <td>{hand.join("") + " " + huTile}</td>
-            </tr>))}
-        </tbody>
-      </table>
+      {yakumanHistories.map(({ yakumans, nickname, hand, huTile }, i) => (
+        <table className={styles.yakumanboard} key={`yakuman-${i}`}>
+          <tbody>
+            <tr>
+              <th colSpan={2}>{nickname}</th>
+            </tr>
+            <tr className={styles.yakuman}>
+              <td className={styles.name}>{yakumans.join("\n")}</td>
+              <td className={styles.hand}>{hand.join("") + " " + huTile}</td>
+            </tr>
+          </tbody>
+        </table>))}
     </div>
   )
 }

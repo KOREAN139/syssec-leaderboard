@@ -17,6 +17,8 @@
 .leaderboard {
   margin-top: 3rem;
   border-collapse: collapse;
+  text-align: center;
+  line-height: 1.5rem;
 }
 
 .leaderboard sup {
@@ -27,19 +29,12 @@
   border-bottom: 1px solid #000;
 }
 
-.leaderboard tfoot tr {
-  border-bottom: none;
-}
-
-.leaderboard th,
-.leaderboard td {
-  text-align: center;
-  line-height: 1.5rem;
-  width: 5.5rem;
-}
-
 .leaderboard th {
   width: 4rem;
+}
+
+.leaderboard td {
+  width: 5.5rem;
 }
 
 .leaderboard .nickname {
@@ -54,6 +49,10 @@
   border: none;
 }
 
+.leaderboard tfoot tr {
+  border-bottom: none;
+}
+
 .yakumanboard {
   margin-top: 3rem;
   border-collapse: collapse;
@@ -63,7 +62,6 @@
   border-bottom: 1px solid #000;
 }
 
-.yakumanboard th,
 .yakumanboard td {
   text-align: center;
   line-height: 1.5rem;
@@ -71,4 +69,13 @@
 
 .yakumanboard .yakuman {
   font-family: 'SangSangRock';
+  height: 4.5rem;
+}
+
+.yakumanboard .yakuman .name {
+  width: 8rem;
+}
+
+.yakumanboard .yakuman .hand {
+  width: 20.5rem;
 }
