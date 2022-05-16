@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.6.1...v1.6.2) (2022-05-16)
+
+
+### Bug Fixes
+
+* **app:** change image base path ([204fb8c](https://github.com/KOREAN139/syssec-leaderboard/commit/204fb8cfdf550a615eac8e12a405284fa02208ac))
+
 ## [1.6.1](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.6.0...v1.6.1) (2022-05-16)
 
 
