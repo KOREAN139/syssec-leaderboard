@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.6.0...v1.6.1) (2022-05-16)
+
+
+### Bug Fixes
+
+* **app:** 이미지 로더 akamai로 교체 ([#37](https://github.com/KOREAN139/syssec-leaderboard/issues/37)) ([501b33e](https://github.com/KOREAN139/syssec-leaderboard/commit/501b33e279cd2740352049df20817439d75b9916))
+
 # [1.6.0](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.5.1...v1.6.0) (2022-05-16)
 
 
