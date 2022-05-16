@@ -19,9 +19,10 @@ const YakumanBoard: NextComponentType = () => {
             <tr className={styles.yakuman}>
               <td className={styles.name}>{yakumans.join("\n")}</td>
               <td className={styles.hand}>
-                {hand.map(tile => (
+                {hand.map((tile, i) => (
                   <Image
                     src={tileImageMap[tile]}
+                    key={`${i}-${tile}`}
                     className={styles.tile}
                     height="60%"
                     width="37%"
