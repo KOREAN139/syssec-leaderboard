@@ -14,7 +14,7 @@ const YakumanBoard: NextComponentType = () => {
         <table className={styles.board} key={`yakuman-${i}`}>
           <tbody>
             <tr>
-              <th colSpan={2}>{nickname}</th>
+              <th colSpan={2} className={styles.nickname}>{nickname}</th>
             </tr>
             <tr className={styles.yakuman}>
               <td className={styles.name}>{yakumans.join("\n")}</td>
