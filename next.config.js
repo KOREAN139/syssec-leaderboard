@@ -6,7 +6,7 @@ const nextConfig = {
   assetPrefix: isProd ? 'https://KOREAN139.github.io/syssec-leaderboard/' : '',
   images: {
     loader: 'akamai',
-    path: '/',
+    path: '',
   },
 }
 
