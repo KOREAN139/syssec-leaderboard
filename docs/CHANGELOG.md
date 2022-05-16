@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.5.1...v1.6.0) (2022-05-16)
+
+
+### Features
+
+* **component:** 역만 타일 이미지 렌더링 ([#36](https://github.com/KOREAN139/syssec-leaderboard/issues/36)) ([edb8cf4](https://github.com/KOREAN139/syssec-leaderboard/commit/edb8cf45538b95ea9bdbd2aff49dca00c6e30b90))
+
 ## [1.5.1](https://github.com/KOREAN139/syssec-leaderboard/compare/v1.5.0...v1.5.1) (2022-05-12)
 
 
