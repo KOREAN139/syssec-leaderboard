@@ -1,4 +1,5 @@
 .board {
+  font-family: 'SangSangRock';
   margin-top: 3rem;
   border-collapse: collapse;
 }
@@ -9,18 +10,21 @@
 
 .board td {
   text-align: center;
-  line-height: 1.5rem;
+  justify-content: center;
+}
+
+.board .nickname {
+  font-size: 2rem;
+  line-height: 4rem;
 }
 
 .board .yakuman {
-  font-family: 'SangSangRock';
   height: 4.5rem;
 }
 
 .board .yakuman .name {
   width: 8rem;
-}
-
-.board .yakuman .hand {
-  width: 20.5rem;
+  font-size: 2rem;
+  line-height: 2rem;
+  white-space: pre-wrap;
 }
