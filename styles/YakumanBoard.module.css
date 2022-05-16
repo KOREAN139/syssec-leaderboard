@@ -9,7 +9,7 @@
 
 .board td {
   text-align: center;
-  line-height: 1.5rem;
+  justify-content: center;
 }
 
 .board .yakuman {
@@ -19,8 +19,7 @@
 
 .board .yakuman .name {
   width: 8rem;
-}
-
-.board .yakuman .hand {
-  width: 20.5rem;
+  font-size: 2rem;
+  line-height: 2rem;
+  white-space: pre-wrap;
 }
